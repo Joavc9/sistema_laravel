@@ -6,15 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    /* get relation */
+    /**
+     * get relations
+     *
+     * @var array
+     */
     public $with = ['getServices'];
-    /* propety masive */
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'name', 'image', 'identification_number', 'email', 'phone', 'observations'
     ];
-
-    /* get services owner cliente */
+    
+    /**
+     * get services
+     *
+     */
     public function getServices()
     {
         return $this->hasMany(Service::class,'client');

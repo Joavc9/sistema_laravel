@@ -47,7 +47,7 @@
     <div class="col-md-12">
         @if (count($client->getServices) > 0)
             <div class="card-body">
-                <table class="table" id="clients">
+                <table class="table" id="services">
                     <thead>
                         <th>Nombre</th>
                         <th>Imagen</th>

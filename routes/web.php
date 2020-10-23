@@ -31,5 +31,3 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/servicios/actualizar', 'ServiceController@update')->name('service.update');
     Route::delete('/servicios/eliminar', 'ServiceController@destroy')->name('service.delete');
 });
-// Route::get('/inicio', 'HomeController@index')->name('home');
-//Routes clients

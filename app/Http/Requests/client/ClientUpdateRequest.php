@@ -32,6 +32,11 @@ class ClientUpdateRequest extends FormRequest
             'observations' => 'required|min:3|max:100',
         ];
     }
+    /**
+     * Get the attributes
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
@@ -56,7 +61,11 @@ class ClientUpdateRequest extends FormRequest
 
         ];
     }
-
+    /**
+     * Get the attributes
+     *
+     * @return array
+     */
     public function attributes()
     {
         return [
