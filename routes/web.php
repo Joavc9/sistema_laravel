@@ -13,13 +13,14 @@
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/salir', 'Auth\LoginController@logout')->name('logout');
-
+// Routes clients
+Route::get('/clientes', 'ClientController@index')->name('clients');
+Route::get('/clientes/ver/{id}', 'ClientController@show')->name('client.show');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/clientes', 'ClientController@index')->name('clients');
+    // Routes clients
     Route::get('/clientes/crear', 'ClientController@create')->name('client.create');
     Route::post('/clientes/guardar', 'ClientController@store')->name('client.store');
-    Route::get('/clientes/ver/{id}', 'ClientController@show')->name('client.show');
     Route::get('/clientes/editar/{id}', 'ClientController@edit')->name('client.edit');
     Route::patch('/clientes/actualizar', 'ClientController@update')->name('client.update');
     Route::delete('/clientes/eliminar', 'ClientController@destroy')->name('client.delete');

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <div class="col-md-12">
-        <a class="btn-primary btn" href="{{route('client.create')}}">Crear cliente</a>
+        <a class="btn-primary btn" href="{{ route('client.create') }}">Crear cliente</a>
         <div class="card-body">
             <table class="table" id="clients">
                 <thead>
@@ -24,9 +24,15 @@
                             <td>{{ $client->observations }}</td>
                             <td>
                                 <div>
-                                    <a class="btn btn-info btn-sm" href="{{ route('client.show', $client->id) }}">Ver detalle</a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('client.edit', $client->id) }}">Editar</a>
-                                    <a class="btn btn-danger btn-sm" data-id="{{$client->id}}" data-url="{{route('client.delete')}}" data-form="" onclick="deleteRegister(this)">Eliminar</a>
+                                    <a class="btn btn-info btn-sm" href="{{ route('client.show', $client->id) }}">Ver
+                                        detalle</a>
+                                    @if (auth()->user())
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{ route('client.edit', $client->id) }}">Editar</a>
+                                        <a class="btn btn-danger btn-sm" data-id="{{ $client->id }}"
+                                            data-url="{{ route('client.delete') }}" data-form=""
+                                            onclick="deleteRegister(this)">Eliminar</a>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

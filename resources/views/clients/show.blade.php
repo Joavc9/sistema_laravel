@@ -55,7 +55,9 @@
                         <th>Fecha inicial</th>
                         <th>Fecha final</th>
                         <th>Observaciones</th>
-                        <th style="width: 15%">Acciones</th>
+                        @if (auth()->user())
+                            <th style="width: 15%">Acciones</th>
+                        @endif
                     </thead>
                     <tbody>
                         @foreach ($client->getServices as $service)
@@ -67,24 +69,30 @@
                                 <td>{{ $service->end_date }}</td>
                                 <td>{{ $service->observations }}</td>
                                 <td>
-                                    <div>
-                                        <a class="btn btn-info btn-sm"
-                                            href="{{ route('service.edit', ['id' => $service->id, 'idClient' => $client->id]) }}">Editar</a>
-                                        <a class="btn btn-danger btn-sm" data-id="{{ $service->id }}"
-                                            data-idclient="{{ $client->id }}" data-url="{{ route('service.delete') }}"
-                                            data-form="" onclick="deleteRegister(this)">Eliminar</a>
-                                    </div>
+                                    @if (auth()->user())
+                                        <div>
+                                            <a class="btn btn-info btn-sm"
+                                                href="{{ route('service.edit', ['id' => $service->id, 'idClient' => $client->id]) }}">Editar</a>
+                                            <a class="btn btn-danger btn-sm" data-id="{{ $service->id }}"
+                                                data-idclient="{{ $client->id }}" data-url="{{ route('service.delete') }}"
+                                                data-form="" onclick="deleteRegister(this)">Eliminar</a>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <a class="btn-primary btn" href="{{ route('service.create', $client->id) }}">Crear servicio</a>
+                @if (auth()->user())
+                    <a class="btn-primary btn" href="{{ route('service.create', $client->id) }}">Crear servicio</a>
+                @endif
             </div>
         @else
             <div class="card-header p-4 text-center">
                 <h3 class="text-center">Este cliente no tiene servicios registrados</h3>
-                <a class="btn-primary btn" href="{{ route('service.create', $client->id) }}">Crear servicio</a>
+                @if (auth()->user())
+                    <a class="btn-primary btn" href="{{ route('service.create', $client->id) }}">Crear servicio</a>
+                @endif
             </div>
         @endif
     </div>

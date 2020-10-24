@@ -13,6 +13,7 @@
     <h1 class="text-center text-uppercase mb-2">Sitema de clientes</h1>
     <div class="container">
         @include('partials.alert')
+        @include('partials.nav')
         @yield('content')
     </div>
 </body>
